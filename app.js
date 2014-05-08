@@ -22,6 +22,8 @@ var getTimeLeft = function(interval){
 };
 
 var server = app.listen(3000, function() {
+  helpers.getVideos();
+
   // Run every hour
   var intervalDuration = 1000000;
   getVideosInterval = setInterval(helpers.getVideos, intervalDuration);
