@@ -5,12 +5,15 @@ var express = require('express');
 var app = express();
 var helpers = require('./helpers');
 var mongoose = require('mongoose');
+var Video = require('./video');
 
 mongoose.connect('mongodb://localhost/eurovision');
 
 app.get('/', function(req, res) {
-  res.statusCode = 200;
-  res.send('');
+  Video.count(function(err, count){
+    res.statusCode = 200;
+    res.send('count: ' + count);
+  });
 });
 
 var server = app.listen(3000, function() {
